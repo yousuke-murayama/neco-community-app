@@ -14,4 +14,5 @@ class User < ApplicationRecord
   mount_uploader :icon, ImageUploader
   
   has_many :wanteds
+  has_many :rooms
 end

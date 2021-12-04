@@ -6,6 +6,7 @@
         <li class="nav-item"><%= link_to 'HOME', root_path %></li>
       <% if logged_in? %>
         <li class="nav-item"><%= link_to '投稿', new_wanted_path %></li>
+        <li class="nav-item"><%= link_to 'トークルーム一覧', rooms_path %></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
           <ul class="dropdown-menu">
