@@ -15,4 +15,5 @@ class User < ApplicationRecord
   
   has_many :wanteds
   has_many :rooms
+  has_many :comments
 end

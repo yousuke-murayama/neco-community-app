@@ -1,1 +1,14 @@
-<p><%= @room.title %></p>
+<h2><%= @room.title %></h2>
+
+<%= render 'comments/comments', comments: @comments %>
+
+<aside class='offset-sm-8 col-sm-4'>
+  <%= form_with(model: [@room, @comment], local: true) do |f| %>
+    <div class='form-group mt-0'>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.text_area :content, class: 'form-control', row: 5 %>
+    </div>
+    <%= f.submit '送信', class: 'btn btn-primary' %>
+    <%= link_to '戻る', rooms_path, class: 'btn btn-secondary' %>
+  <% end %>
+</aside>

@@ -1,7 +1,68 @@
 @import 'bootstrap';
 
+$pink: #ffccff;
+
+//アイコン
 .user-icon {
     border-radius: 50%;
     margin-bottom: 20px;
     margin-right: 5px;
+}
+
+//コメント
+
+.balloon {
+    position: relative;
+    display: inline-block;
+    margin: 0.5em 30px 1.1em 15px;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: $pink;
+    word-break: break-all;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid $pink;
+}
+
+//捜索願
+.wanted-content {
+  h3 {
+    padding: 0.5em;
+    color: #555;
+    background: #eaf3ff;
+    border-bottom: solid 3px #516ab6;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//捜索願画像表示
+.wanted-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.wanted-image::after {
+  display: block;
+  content:"";
+  width: 250px;
 }

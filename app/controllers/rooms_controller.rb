@@ -7,6 +7,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @comments = @room.comments
+    @comment = current_user.comments.build
   end
 
   def new

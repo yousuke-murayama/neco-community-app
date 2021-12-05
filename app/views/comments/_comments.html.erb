@@ -1,0 +1,26 @@
+<div class='offset-sm-2 col-sm-8'>
+  <div class='comment-form'>
+    <ul class='list-unstyled'>
+      <% comments.each do |comment| %>
+        <li class='media'>
+          <% if comment.user.icon? %>
+            <%= image_tag comment.user.icon.thumb.url, class: 'user-icon' %>
+          <% else %>
+            <%= image_tag '/assets/default.jpg', size: '70x70', class: 'user-icon' %>
+          <% end %>
+          <div class='media-body'>
+            <div class='ml-4'>
+              <%= link_to comment.user.name, user_path(comment.user) %>
+            </div>
+            <div class='balloon'>
+              <p><%= comment.content %></p>
+            </div>
+            <% if current_user == comment.user %>
+              <%= link_to '削除', room_comment_path(comment.room, comment), method: :delete, class: 'btn btn-danger' %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
