@@ -1,3 +1,12 @@
+<div class='form-group'>
+  <%= search_form_for @q, url: root_path, method: :get do |f| %>
+    <div class='d-flex col-sm-8 offset-sm-2 mt-4'>
+      <%= f.search_field :date_cont, placeholder: '日付', class: 'form-control' %>
+      <span><%= f.submit '検索', class: 'btn btn-primary' %></span>
+    </div>
+  <% end %>
+</div>
+
 <figure class='wanted-image'>
   <% @wanteds.each do |wanted| %>
     <%= link_to wanted_path(wanted) do %>
@@ -6,3 +15,5 @@
     <% end %>
   <% end %>
 </figure>
+
+<%= paginate @wanteds %>

@@ -2,7 +2,8 @@ class RoomsController < ApplicationController
   before_action :require_logged_in
   
   def index
-    @rooms = Room.all
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(20)
   end
 
   def show

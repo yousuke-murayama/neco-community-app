@@ -1,6 +1,15 @@
 <h2>トークルーム一覧</h2>
 <h3><%= link_to 'トークルームの作成', new_room_path %></h3>
 
+<div class='form-group'>
+  <%= search_form_for @q do |f| %>
+    <div class='d-flex col-sm-8 offset-sm-2 mt-4'>
+      <%= f.search_field :title_cont, placeholder: '題名', class: 'form-control' %>
+      <span><%= f.submit '検索', class: 'btn btn-primary' %></span>
+    </div>
+  <% end %>
+</div>
+
 <% if @rooms.any? %>
   <table class="table table-striped">
     <thead>
@@ -19,3 +28,5 @@
     </tbody>
   </table>
 <% end %>
+
+<%= paginate @rooms %>
