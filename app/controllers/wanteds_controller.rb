@@ -30,7 +30,7 @@ class WantedsController < ApplicationController
   private
   
   def wanted_params
-    params.require(:wanted).permit(:image, :title, :date, :content)
+    params.require(:wanted).permit(:image, :title, :date, :content, :address, :latitude, :longitude)
   end
   
   def correct_user

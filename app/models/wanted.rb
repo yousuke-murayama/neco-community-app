@@ -1,10 +1,19 @@
 class Wanted < ApplicationRecord
-  validates :title, presence: true, length: { maximum: 50 }
-  validates :image, presence: true
-  validates :date, presence: true
-  validates :content, presence: true, length: { maximum: 255 }
+  
+  with_options presence: true do
+    validates :title, length: { maximum: 50 }
+    validates :image
+    validates :date
+    validates :content, length: { maximum: 255 }
+    validates :address
+    validates :latitude
+    validates :longitude
+  end
   
   mount_uploader :image, ImageUploader
+  
+  geocoded_by :address
+  before_validation :geocode, if: :address_changed?
 
   belongs_to :user
 end

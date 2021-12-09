@@ -1,5 +1,5 @@
 <h1>捜索願</h1>
-<div class='offset-sm-3 col-sm-6'>
+<div class='offset-sm-2 col-sm-8'>
   <%= image_tag @wanted.image.url, size: '250x250' if @wanted.image? %>
   <div class='wanted-content'>
     <h3><%= @wanted.title %></h3>
@@ -7,7 +7,44 @@
     <p><%= @wanted.date %></p>
     <h3>具体的な状況</h3>
     <p><%= @wanted.content %></p>
+    <h3>迷子になった場所</h3>
+    <p><%= @wanted.address %></p>
+    <div id="gmap_wrapper">
+      <div id="map"></div>
+    </div> 
   </div>
+  
   <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger' %></p>
 </div>
-  
+
+
+
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @wanted.latitude %>, lng: <%= @wanted.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @wanted.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+    
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>

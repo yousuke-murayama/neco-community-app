@@ -17,6 +17,9 @@
         <%= f.label :date, '迷子になった日時' %>
         <%= f.date_field :date, class: 'form-control' %>
         
+        <%= f.label :address, '迷子になった場所' %>
+        <%= f.text_field :address, placeholder: '住所・地名', class: 'form-control' %>
+        
         <%= f.label :content, '具体的な状況' %>
         <%= f.text_field :content, class: 'form-control', rows: 5 %>
         
