@@ -43,8 +43,20 @@ body {
 }
 
 //捜索願
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+    border-top: 3px solid green;
+    border-bottom: 3px solid green;
+    text-align: center;
+}
+
 .wanted-content {
   h3 {
+    font-size: 18px;
     padding: 0.5em;
     color: #555;
     background: #eaf3ff;

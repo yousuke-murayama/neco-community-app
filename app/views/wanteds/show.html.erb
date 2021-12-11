@@ -1,22 +1,23 @@
 <h1>捜索願</h1>
-<div class='offset-sm-2 col-sm-8'>
-  <%= image_tag @wanted.image.url, size: '250x250' if @wanted.image? %>
-  <div class='wanted-content'>
-    <h3><%= @wanted.title %></h3>
-    <h3>迷子になった日</h3>
-    <p><%= @wanted.date %></p>
-    <h3>具体的な状況</h3>
-    <p><%= @wanted.content %></p>
-    <h3>迷子になった場所</h3>
-    <p><%= @wanted.address %></p>
-    <div id="gmap_wrapper">
-      <div id="map"></div>
-    </div> 
-  </div>
-  
-  <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger' %></p>
-</div>
+<h2><%= @wanted.title %></h2>
 
+<div class='media row mt-4'>
+  <%= image_tag @wanted.image.url, size: '300x300', class: 'col-sm-6' if @wanted.image? %>
+  <div class='media-body col-sm-6'>
+    <div class='wanted-content'>
+      <h3>迷子になった日</h3>
+      <p><%= @wanted.date %></p>
+      <h3>具体的な状況</h3>
+      <p><%= @wanted.content %></p>
+      <h3>迷子になった場所</h3>
+      <p><%= @wanted.address %></p>
+      <div id="gmap_wrapper">
+        <div id="map"></div>
+      </div> 
+    </div> 
+    <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
+  </div>
+</div>
 
 
 <script type="text/javascript">

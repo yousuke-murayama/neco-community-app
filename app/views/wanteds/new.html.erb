@@ -1,4 +1,4 @@
-<h2>捜索願提出</h2>
+<h1>捜索願提出</h1>
 
 <div class='row'>
   <div class='col-sm-6 offset-sm-3'>
@@ -21,9 +21,9 @@
         <%= f.text_field :address, placeholder: '住所・地名', class: 'form-control' %>
         
         <%= f.label :content, '具体的な状況' %>
-        <%= f.text_field :content, class: 'form-control', rows: 5 %>
+        <%= f.text_area :content, class: 'form-control', rows: 5 %>
         
-        <%= f.submit '提出', class: 'btn btn-primary btn-block' %>
+        <%= f.submit '提出', class: 'btn btn-primary btn-block mt-4' %>
       </div>
     <% end %>
   </div>
