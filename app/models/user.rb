@@ -16,4 +16,20 @@ class User < ApplicationRecord
   has_many :wanteds
   has_many :rooms
   has_many :comments
+  has_many :cooperations
+  has_many :cooperated_wanteds, through: :cooperations, source: :wanted, dependent: :destroy
+  
+  def cooperate(wanted)
+    self.cooperations.find_or_create_by(wanted_id: wanted.id)
+  end
+  
+  def not_cooperate(wanted)
+    cooperation = self.cooperations.find_by(wanted_id: wanted.id)
+    cooperation.destroy if cooperation
+  end
+  
+  def cooperating?(wanted)
+    self.cooperated_wanteds.include?(wanted)
+  end
+  
 end

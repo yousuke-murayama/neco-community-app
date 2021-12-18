@@ -14,13 +14,17 @@
       <div id="gmap_wrapper">
         <div id="map"></div>
       </div> 
-    </div> 
-    <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
+    </div>
+    <% if current_user == @wanted.user %>
+      <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
+    <% else %>
+      <p><%= render 'cooperations/cooperations_button', wanted: @wanted %></p>
+    <% end %>
   </div>
 </div>
 
 
-<script type="text/javascript">
+<script type="text/javascript"  >
     function initMap() {
 
         var test ={lat: <%= @wanted.latitude %>, lng: <%= @wanted.longitude %>};
@@ -47,5 +51,5 @@
         });
     }
 </script>
-    
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
