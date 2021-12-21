@@ -1,4 +1,23 @@
-<%= render 'users/icon', user: @user %>
-<h1><%= @user.name %></h1>
-<h1><%= @user.email %></h1>
-<h1><%= link_to 'ログアウト', logout_path,  method: :delete %></h1>
+<h1>マイページ</h1>
+<div class="user-data">
+  <%= render 'users/icon', user: @user %>
+  <h3><%= @user.name %></h3>
+</div>
+
+<ul class="tab-list list-unstyled">
+  <li class="tab tab-active">トークルーム一覧</li>
+  <li class="tab">捜査協力中</li>  
+  <li class="tab">捜索願</li>
+</ul>
+
+<div class="tab-contents">
+  <div class="tab-content content-show">
+    <%= render 'rooms/room_lists', rooms: @rooms %>
+  </div>
+  <div class="tab-content">
+    <%= render 'wanteds/wanted_list', wanteds: @cooperated_wanteds %>
+  </div>
+  <div class="tab-content">
+    <%= render 'wanteds/wanted_list', wanteds: @wanteds %>
+  </div>
+</div>

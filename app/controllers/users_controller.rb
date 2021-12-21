@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   
-  before_action :require_logged_in, only: [:show, :edit, :update, :cooperates]
+  before_action :require_logged_in, only: [:show, :edit, :update]
   
   def show
     @user = User.find(params[:id])
+    @rooms = @user.rooms
+    @cooperated_wanteds = @user.cooperated_wanteds
+    @wanteds = @user.wanteds
   end
 
   def new
@@ -37,10 +40,6 @@ class UsersController < ApplicationController
       flash[:danger] = '変更されませんでした'
       render :edit
     end
-  end
-  
-  def cooperates
-    @cooperated_wanteds = current_user.cooperated_wanteds
   end
   
   private
