@@ -3,12 +3,15 @@ class CommentsController < ApplicationController
   
   def create
     @comment = current_user.comments.build(comment_params)
+    
+    @room = Room.find_by(id: @comment.room_id)
+    
+    @comments = @room.comments
+    
     if @comment.save
-      flash[:success] = 'コメントを送信しました'
-      redirect_back(fallback_location: root_path)
+      render :create
     else
-      flash[:danger] = '送信に失敗しました'
-      redirect_back(fallback_location: root_path)
+      render :error
     end
   end
 
