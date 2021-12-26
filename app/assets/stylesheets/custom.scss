@@ -54,6 +54,11 @@ h2 {
     text-align: center;
 }
 
+strong {
+  border-top: 5px dotted #ff3366;
+  border-bottom: 5px dotted #ff3366;
+}
+
 .wanted-content {
   h3 {
     font-size: 18px;
@@ -65,6 +70,17 @@ h2 {
   p {
     margin: 0;
     padding: 0;
+  }
+}
+
+//協力ボタン
+.async_cooperation {
+  margin-top: 20px;
+  .cooperating_btn {
+    background: #00ffcc;
+  }
+  .not_cooperate_btn {
+    background: #FFFFCC;
   }
 }
 

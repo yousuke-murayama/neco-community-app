@@ -1,11 +1,11 @@
 <% if current_user.cooperating?(wanted) %>
-  <%= form_with(model: current_user.cooperations.find_by(wanted_id: wanted.id), local: true, method: :delete) do |f| %>
+  <%= form_with(model: current_user.cooperations.find_by(wanted_id: wanted.id), method: :delete) do |f| %>
     <%= hidden_field_tag :wanted_id, wanted.id %>
-    <%= f.submit "捜査協力中", class: "btn btn-success" %>
+    <%= f.submit "捜査協力中", class: "btn cooperating_btn" %>
   <% end %>
 <% else %>
-  <%= form_with(model: current_user.cooperations.build, local: true) do |f| %>
+  <%= form_with(model: current_user.cooperations.build) do |f| %>
     <%= hidden_field_tag :wanted_id, wanted.id %>
-    <%= f.submit "捜査に協力する", class: "btn btn-outline-success" %>
+    <%= f.submit "捜査に協力する", class: "btn not_cooperate_btn" %>
   <% end %>
 <% end %>

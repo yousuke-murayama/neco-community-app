@@ -1,6 +1,10 @@
 <h1>捜索願</h1>
 <h2><%= @wanted.title %></h2>
 
+<div class="async_count">
+  <%= render 'cooperations/count_cooperations', count_cooperating: @count_cooperating %>
+</div>
+
 <div class='media row mt-4'>
   <%= image_tag @wanted.image.url, size: '300x300', class: 'col-sm-6' if @wanted.image? %>
   <div class='media-body col-sm-6'>
@@ -18,7 +22,9 @@
     <% if current_user == @wanted.user %>
       <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
     <% else %>
+    <div class="async_cooperation">
       <p><%= render 'cooperations/cooperations_button', wanted: @wanted %></p>
+    </div>
     <% end %>
   </div>
 </div>

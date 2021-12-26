@@ -4,6 +4,8 @@ class WantedsController < ApplicationController
   
   def show
     @wanted = Wanted.find(params[:id])
+    
+    @count_cooperating = @wanted.cooperations.count
   end
 
   def new
