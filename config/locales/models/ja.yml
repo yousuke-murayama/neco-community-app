@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    model:
+      user: ユーザ
+      wanted: 捜索願
+      comment: コメント
+      room: トークルーム
+    attributes:
+      user:
+        name: ユーザ名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      wanted:
+        title: タイトル
+        image: 画像
+        date: 日付
+        content: 内容
+        address: 場所
+      comment:
+        content: コメント
+      room:
+        title: ルーム名
