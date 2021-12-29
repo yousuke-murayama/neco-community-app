@@ -1,9 +1,36 @@
 @import 'bootstrap';
 
 $pink: #ffccff;
+$red: #ff3366;
 
 body {
+  background-color: #ffffee;
   word-break: break-all;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #ccffff;
+    .footer-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        p {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    }
+    .copy {
+        border-top: 1px solid #999999;
+    }
 }
 
 //アイコン
@@ -55,8 +82,8 @@ h2 {
 }
 
 strong {
-  border-top: 5px dotted #ff3366;
-  border-bottom: 5px dotted #ff3366;
+  border-top: 5px dotted $red;
+  border-bottom: 5px dotted $red;
 }
 
 .wanted-content {
@@ -80,7 +107,7 @@ strong {
     background: #00ffcc;
   }
   .not_cooperate_btn {
-    background: #FFFFCC;
+    background: #ff82b2;
   }
 }
 
@@ -91,6 +118,13 @@ strong {
   justify-content: space-between;
   margin-top: 30px;
   margin-bottom: 30px;
+  a {
+    margin-bottom: 30px;
+    p {
+    margin: 0;
+    padding: 0;
+    }
+  }
 }
 
 .wanted-image::after {
@@ -131,16 +165,16 @@ strong {
   width: 100%;
   padding: 10px;
   cursor: pointer;
-  border-left: solid 1px #CCC;
-  border-bottom: solid 1px #CCC;
+  border-left: solid 2px #ccc;
+  border-bottom: solid 2px #ccc;
   }
   .tab:first-child {
     border-left: none;
   }
   // タブがactiveのときのデザイン
   .tab-active {
-    color: #FFF;
-    background: #19b5d1;
+    color: #fff;
+    background: #2C7CFF;
     transition: all 0.2s ease-in-out;
   }
 }

@@ -2,7 +2,10 @@
   <% wanteds.each do |wanted| %>
     <%= link_to wanted_path(wanted) do %>
       <%= image_tag wanted.image.url, size: '250x250' if wanted.image? %>
-      <figcaption><%= wanted.date %></figcaption>
+      <figcaption>
+        <p><%= wanted.address %></p>
+        <p><%= wanted.date %></p>
+      </figcaption>
     <% end %>
   <% end %>
 </figure>

@@ -2,7 +2,7 @@
   <div class="footer-menu">
     <p><%= link_to 'HOME', root_path %></p>
     <% if logged_in? %>
-      <p><%= link_to '投稿', new_post_path %></p>
+      <p><%= link_to '捜索願提出', new_wanted_path %></p>
       <p><%= link_to 'Mypage', current_user %></p>
     <% else %>
       <p><%= link_to '登録', signup_path %></p>
@@ -10,6 +10,6 @@
     <% end %>
   </div>
 　<div class="copy">
-    &copy; 2021 Small-Image.
+    &copy; 2021 stray-cat.
   </div>
 </footer>

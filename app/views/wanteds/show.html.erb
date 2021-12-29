@@ -29,7 +29,7 @@
   </div>
 </div>
 
-
+<%# GoogleMapの描画 %>
 <script type="text/javascript"  >
     function initMap() {
 
@@ -58,4 +58,4 @@
     }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" data-turbolinks-eval="false" async defer></script>
