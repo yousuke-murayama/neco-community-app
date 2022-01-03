@@ -40,6 +40,10 @@ footer {
     margin-right: 5px;
 }
 
+.upload_icon {
+  text-align: center;
+}
+
 //コメント
 
 .balloon {
@@ -184,12 +188,19 @@ strong {
   display: none;
   padding: 15px;
 }
+
 // box-showクラスのものだけ表示
 .content-show {
   display: block;
 }
+
 // hover時のアクション
-.tab:hover{
+.tab:hover {
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
+}
+
+//捜索願提出画面
+.upload_area {
+  text-align: center;
 }
