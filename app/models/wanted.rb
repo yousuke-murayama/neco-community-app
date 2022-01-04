@@ -16,5 +16,6 @@ class Wanted < ApplicationRecord
   before_validation :geocode, if: :address_changed?
 
   belongs_to :user
+  has_many :testimonies, dependent: :destroy
   has_many :cooperations, dependent: :destroy
 end

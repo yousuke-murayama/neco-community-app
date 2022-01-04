@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_043432) do
+ActiveRecord::Schema.define(version: 2022_01_04_010342) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_12_15_043432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
+  create_table "testimonies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.string "photo"
+    t.bigint "user_id"
+    t.bigint "wanted_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_testimonies_on_user_id"
+    t.index ["wanted_id"], name: "index_testimonies_on_wanted_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -68,5 +79,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_043432) do
   add_foreign_key "cooperations", "users"
   add_foreign_key "cooperations", "wanteds"
   add_foreign_key "rooms", "users"
+  add_foreign_key "testimonies", "users"
+  add_foreign_key "testimonies", "wanteds"
   add_foreign_key "wanteds", "users"
 end

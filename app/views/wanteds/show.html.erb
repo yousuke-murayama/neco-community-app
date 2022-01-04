@@ -5,6 +5,7 @@
   <%= render 'cooperations/count_cooperations', count_cooperating: @count_cooperating %>
 </div>
 
+<%# 捜索願の内容 %>
 <div class='media row mt-4'>
   <%= image_tag @wanted.image.url, size: '300x300', class: 'col-sm-6' if @wanted.image? %>
   <div class='media-body col-sm-6'>
@@ -29,6 +30,19 @@
   </div>
 </div>
 
+<%# 目撃証言 %>
+<%= render 'testimonies/testimonies', testimonies: @testimonies %>
+
+<div>
+  <%= form_with(model: [@wanted, @testimony], local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: @testimony %>
+    
+    <%= f.hidden_field :wanted_id, value: @wanted.id %>
+    <%= f.text_area :content %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
+  
 <%# GoogleMapの描画 %>
 <script type="text/javascript"  >
     function initMap() {

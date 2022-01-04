@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to: 'toppages#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -8,7 +9,9 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :edit, :update] 
   
-  resources :wanteds, only: [:show, :new, :create, :destroy]
+  resources :wanteds, only: [:show, :new, :create, :destroy] do
+    resources :testimonies, only: [:create, :destroy]
+  end
   
   resources :rooms, only: [:index, :show, :new, :create, :destroy] do
     resources :comments, only: [:create, :destroy]

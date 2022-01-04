@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :wanteds
   has_many :rooms
   has_many :comments
+  has_many :testimonies
   has_many :cooperations
   has_many :cooperated_wanteds, through: :cooperations, source: :wanted, dependent: :destroy
   
