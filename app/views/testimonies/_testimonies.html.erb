@@ -1,6 +1,26 @@
-<div>
-  <% testimonies.each do |testimony| %>
-  <p><%= testimony.content %></p>
-  <p><%= link_to '削除', wanted_testimony_path(testimony.wanted, testimony), method: :delete, class: 'btn btn-danger' %></p>
-  <% end %>
-</div> 
+<div class="offset-sm-2 col-sm-8">
+  <div class="testimony_area">
+    <h2 class="testimony_title">目撃情報</h2>
+    <% testimonies.each do |testimony| %>
+      <li class="media">
+        <% if testimony.user.icon? %>
+          <%= image_tag testimony.user.icon.url, size: "40x40", class: 'user-icon' %>
+        <% else %>
+          <%= image_tag '/assets/default.jpg', size: "40x40", class: 'user-icon' %>
+        <% end %>
+        <div class="media-body">
+          <div>
+            <%= link_to testimony.user.name, user_path(testimony.user) %>
+          </div>
+          <div class="testimony_content">
+            <p><%= testimony.content %></p>
+            <p><%= image_tag testimony.photo.url, size: "200x200" if testimony.photo? %></p>
+          </div>
+          <% if current_user == testimony.user %>
+            <%= link_to "削除", wanted_testimony_path(testimony.wanted, testimony), method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </div> 
+</div>

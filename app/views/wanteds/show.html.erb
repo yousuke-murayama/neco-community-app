@@ -1,5 +1,5 @@
 <h1>捜索願</h1>
-<h2><%= @wanted.title %></h2>
+<h2 class="wanted_title"><%= @wanted.title %></h2>
 
 <div class="async_count">
   <%= render 'cooperations/count_cooperations', count_cooperating: @count_cooperating %>
@@ -20,28 +20,38 @@
         <div id="map"></div>
       </div> 
     </div>
-    <% if current_user == @wanted.user %>
-      <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
-    <% else %>
-    <div class="async_cooperation">
-      <p><%= render 'cooperations/cooperations_button', wanted: @wanted %></p>
-    </div>
+    <% if logged_in? %>
+      <% if current_user == @wanted.user %>
+        <p><%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %></p>
+      <% else %>
+      <div class="async_cooperation">
+        <p><%= render 'cooperations/cooperations_button', wanted: @wanted %></p>
+      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
 
 <%# 目撃証言 %>
-<%= render 'testimonies/testimonies', testimonies: @testimonies %>
+<% if logged_in? %>
+  <div class="async_testimony">
+    <%= render 'testimonies/testimonies', testimonies: @testimonies %>
+  </div>
 
-<div>
-  <%= form_with(model: [@wanted, @testimony], local: true) do |f| %>
-    <%= render 'layouts/error_messages', model: @testimony %>
-    
-    <%= f.hidden_field :wanted_id, value: @wanted.id %>
-    <%= f.text_area :content %>
-    <%= f.submit "送信" %>
-  <% end %>
-</div>
+  <div class="offset-sm-4 col-sm-4">
+    <div class="form-group mt-4">
+      <%= form_with(model: [@wanted, @testimony]) do |f| %>
+      <div class="testimony_error">
+        <%= render 'layouts/error_messages', model: @testimony %>
+      </div>
+        <%= f.hidden_field :wanted_id, value: @wanted.id %>
+        <%= f.text_area :content, placeholder: "目撃情報", class: "async_text_area form-control" %>
+        <%= f.file_field :photo, class: "async_file_area form-control" %>
+        <%= f.submit "送信", class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
   
 <%# GoogleMapの描画 %>
 <script type="text/javascript"  >

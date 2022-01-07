@@ -4,9 +4,13 @@ class WantedsController < ApplicationController
   
   def show
     @wanted = Wanted.find(params[:id])
-    @testimonies = @wanted.testimonies
-    @testimony = current_user.testimonies.build#目撃証言の作成
     @count_cooperating = @wanted.cooperations.count#捜査協力者のカウント
+    
+    if logged_in?
+      @testimonies = @wanted.testimonies
+      @testimony = current_user.testimonies.build#目撃証言の作成
+    end
+    
   end
 
   def new

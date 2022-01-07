@@ -4,12 +4,14 @@ class TestimoniesController < ApplicationController
   def create
     @testimony = current_user.testimonies.build(testimony_params)
     
+    @wanted = Wanted.find_by(id: @testimony.wanted_id)
+    
+    @testimonies = @wanted.testimonies
+    
     if @testimony.save
-      flash[:success] = "送信しました"
-      redirect_back(fallback_location: root_path)
+      render :create
     else
-      flash[:danger] = "送信に失敗しました"
-      redirect_back(fallback_location: root_path)
+      render :error
     end
   end
 
