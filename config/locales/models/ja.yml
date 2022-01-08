@@ -5,6 +5,7 @@ ja:
       wanted: 捜索願
       comment: コメント
       room: トークルーム
+      testimony: 目撃証言
     attributes:
       user:
         name: ユーザ名
@@ -14,10 +15,15 @@ ja:
       wanted:
         title: タイトル
         image: 画像
-        date: 日付
-        content: 内容
+        date: 日時
+        content: 具体的な状況
         address: 場所
+        latitude: 緯度
+        longitude: 経度
       comment:
         content: コメント
       room:
         title: ルーム名
+      testimony:
+        content: コメント
+        photo: 写真

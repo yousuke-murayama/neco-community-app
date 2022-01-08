@@ -6,9 +6,11 @@ class Wanted < ApplicationRecord
     validates :date
     validates :content, length: { maximum: 255 }
     validates :address
-    validates :latitude
-    validates :longitude
   end
+  
+  validates :latitude, presence: { message: "が特定できませんでした" }
+  validates :longitude, presence: { message: "が特定できませんでした" }
+  
   
   mount_uploader :image, ImageUploader
   

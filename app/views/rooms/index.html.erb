@@ -1,4 +1,4 @@
-<h2>トークルーム一覧</h2>
+<h2 class="room_list">トークルーム一覧</h2>
 <h3><%= link_to 'トークルームの作成', new_room_path %></h3>
 
 <div class='form-group'>
@@ -22,7 +22,12 @@
       <% @rooms.each do |room| %>
       <tr>
         <td><%= link_to room.title, room %></td>
-        <td><%= room.user.name %></td>
+        <td>
+          <%= room.user.name %>
+          <% if room.user == current_user %>
+          <%= link_to "削除", room, method: :delete, class: "btn btn-danger" %>
+        <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>

@@ -1,5 +1,6 @@
 class TestimoniesController < ApplicationController
   before_action :require_logged_in
+  before_action :correct_testimony, only: [:destroy]
   
   def create
     @testimony = current_user.testimonies.build(testimony_params)

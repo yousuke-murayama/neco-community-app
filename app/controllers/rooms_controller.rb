@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :require_logged_in
+  before_action :correct_room, only: [:destroy]
   
   def index
     @q = Room.ransack(params[:q])
@@ -28,12 +29,22 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+    @room.destroy
+    flash[:success] = "トークルームを削除しました"
+    redirect_back(fallback_location: root_path)
   end
   
   private
   
   def room_params
     params.require(:room).permit(:title)
+  end
+  
+  def correct_room
+    @room = current_user.rooms.find_by(id: params[:id])
+    unless @room
+      redirect_to root_url
+    end
   end
   
 end

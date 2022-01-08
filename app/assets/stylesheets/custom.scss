@@ -2,6 +2,7 @@
 
 $pink: #ffddff;
 $red: #ff3366;
+$green: #ccffcc;
 
 body {
   background-color: #ffffee;
@@ -230,4 +231,17 @@ strong {
       color: black;
     }
   }
+}
+
+//トークルーム
+.room_list {
+  text-align: center;
+  background: $green;
+  margin-top: 20px;
+}
+
+.room_title {
+  text-align: center;
+  background: $green;
+  margin-top: 20px;
 }
