@@ -14,7 +14,7 @@ class CooperationsController < ApplicationController
   def destroy
     @wanted = Wanted.find(params[:wanted_id])
     current_user.not_cooperate(@wanted)
-    
+  
     set_count
     
     render :cooperation
