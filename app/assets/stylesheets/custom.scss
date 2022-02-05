@@ -265,3 +265,16 @@ strong {
   left: 0;
  }
 }
+
+.comments_count {
+  width: 60px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #2779bd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.0rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
