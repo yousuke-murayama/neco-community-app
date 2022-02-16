@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'solveds/create'
+  get 'solveds/destroy'
   root to: 'toppages#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -18,5 +20,6 @@ Rails.application.routes.draw do
   end
   
   resources :cooperations, only: [:create, :destroy]
+  resources :solveds, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

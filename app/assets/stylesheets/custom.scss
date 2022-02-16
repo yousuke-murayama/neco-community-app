@@ -77,18 +77,26 @@ footer {
 //捜索願
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.solved_marker {
+  background: #ffff00;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+strong {
+  border-top: 5px dotted $red;
+  border-bottom: 5px dotted $red;
 }
 
 .wanted_title {
     border-top: 3px solid green;
     border-bottom: 3px solid green;
     text-align: center;
-}
-
-strong {
-  border-top: 5px dotted $red;
-  border-bottom: 5px dotted $red;
 }
 
 .wanted-content {
@@ -114,6 +122,17 @@ strong {
   .not_cooperate_btn {
     background: #ff82b2;
   }
+}
+
+//解決ボタン
+#solved_btn {
+  margin-left: 15px;
+  background: #ffff55;
+}
+
+.not_solved_btn {
+  margin-left: 15px;
+  background: #eeeeee;
 }
 
 //捜索願画像表示
