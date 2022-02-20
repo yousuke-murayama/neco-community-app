@@ -151,6 +151,12 @@ strong {
   }
 }
 
+.show_solved {
+  background: #ffff00;
+  display: inline;
+  color: #111111;
+}
+
 .wanted-image::after {
   display: block;
   content:"";
@@ -265,7 +271,7 @@ strong {
   margin-top: 20px;
 }
 
-//カウント表示
+//トップページ上で捜索協力者の人数を表示
 .count_box {
   position: relative;
   .human_icon {
@@ -296,4 +302,14 @@ strong {
   font-size: 1.0rem;
   border-radius: 50%;
   cursor: pointer;
+}
+
+//マイページのトークルームの表示
+.my_rooms {
+  display: flex;
+  margin-top: 10px;
+  .my_room {
+  margin-right: 20px;
+  margin-top: 7px;
+  }
 }

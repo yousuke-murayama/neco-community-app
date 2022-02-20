@@ -1,6 +1,11 @@
 <figure class='wanted-image'>
     <% wanteds.each do |wanted| %>
       <%= link_to wanted_path(wanted) do %>
+        <% if wanted.already_solved? %>
+          <figcaption class="show_solved">解決済</figcaption>
+        <% else %>
+          <figcaption>未解決</figcaption>
+        <% end %>
         <div class="count_box">
           <%= image_tag wanted.image.url, size: '250x250' if wanted.image? %>
           <div class="human_icon">

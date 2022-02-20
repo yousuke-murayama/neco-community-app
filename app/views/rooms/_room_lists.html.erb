@@ -1,3 +1,6 @@
 <% rooms.each do |room| %>
-  <p><%= link_to room.title, room %></p>
+  <div class="my_rooms">
+    <div class="my_room"><%= link_to room.title, room %></div>
+    <div class="comments_count"><i class="far fa-comment-dots"></i><%= room.comments.count %></div>
+  </div>
 <% end %>
