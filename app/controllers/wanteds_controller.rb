@@ -1,5 +1,5 @@
 class WantedsController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create, :destroy]
+  before_action :require_logged_in, only: [:new, :create, :update, :destroy]
   before_action :correct_user, only: [:destroy]
   
   def show
@@ -26,6 +26,12 @@ class WantedsController < ApplicationController
       flash[:danger] = '提出できませんでした'
       render :new
     end
+  end
+  
+  def update
+    @wanted = Wanted.find(params[:id])
+    current_user.solved_wanted(@wanted)
+    redirect_to @wanted
   end
 
   def destroy

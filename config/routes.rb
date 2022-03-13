@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :edit, :update] 
   
-  resources :wanteds, only: [:show, :new, :create, :destroy] do
+  resources :wanteds, only: [:show, :new, :create, :update, :destroy] do
     resources :testimonies, only: [:create, :destroy]
   end
   
@@ -20,6 +20,5 @@ Rails.application.routes.draw do
   end
   
   resources :cooperations, only: [:create, :destroy]
-  resources :solveds, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

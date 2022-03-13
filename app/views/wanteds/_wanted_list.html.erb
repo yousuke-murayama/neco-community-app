@@ -1,6 +1,7 @@
 <figure class='wanted-image'>
     <% wanteds.each do |wanted| %>
       <%= link_to wanted_path(wanted) do %>
+      <%# 既に解決済かどうか %>
         <% if wanted.already_solved? %>
           <figcaption class="show_solved">解決済</figcaption>
         <% else %>
@@ -8,6 +9,7 @@
         <% end %>
         <div class="count_box">
           <%= image_tag wanted.image.url, size: '250x250' if wanted.image? %>
+          <%# 捜索協力者の人数表示 %>
           <div class="human_icon">
             <i class="far fa-user"></i><%= wanted.cooperations.count %>
           </div>

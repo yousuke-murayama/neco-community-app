@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_011139) do
+ActiveRecord::Schema.define(version: 2022_03_13_073715) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -38,16 +38,6 @@ ActiveRecord::Schema.define(version: 2022_02_13_011139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
-  end
-
-  create_table "solveds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "wanted_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "wanted_id"], name: "index_solveds_on_user_id_and_wanted_id", unique: true
-    t.index ["user_id"], name: "index_solveds_on_user_id"
-    t.index ["wanted_id"], name: "index_solveds_on_wanted_id"
   end
 
   create_table "testimonies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_011139) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "solved", default: false, null: false
     t.index ["user_id"], name: "index_wanteds_on_user_id"
   end
 
@@ -89,8 +80,6 @@ ActiveRecord::Schema.define(version: 2022_02_13_011139) do
   add_foreign_key "cooperations", "users"
   add_foreign_key "cooperations", "wanteds"
   add_foreign_key "rooms", "users"
-  add_foreign_key "solveds", "users"
-  add_foreign_key "solveds", "wanteds"
   add_foreign_key "testimonies", "users"
   add_foreign_key "testimonies", "wanteds"
   add_foreign_key "wanteds", "users"

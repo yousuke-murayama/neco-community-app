@@ -5,7 +5,15 @@
     <div class='d-flex col-sm-8 offset-sm-2 mt-4'>
       <%= f.search_field :date_or_address_cont, placeholder: '日付または場所', class: 'form-control' %>
       <span><%= f.submit '検索', class: 'btn btn-primary' %></span>
+      
     </div>
+    <p class="col-sm-8 offset-sm-2 radio_button">
+      <span>
+        <%= f.radio_button :solved_eq, true %>解決済
+        <%= f.radio_button :solved_eq, false %>未解決
+        <%= f.radio_button :solved_eq, "" %>指定なし
+      </span>
+    </p>
   <% end %>
 </div>
 

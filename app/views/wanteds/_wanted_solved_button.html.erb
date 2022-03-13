@@ -1,0 +1,8 @@
+<% if wanted.already_solved? %>
+  <div id="solved_btn" class="btn mt-4">解決済</div>
+<% else %>
+  <%= form_with(model: wanted, local: true,
+      data: { confirm: "解決済みにしてよろしいですか？（一度解決済みにすると元に戻せません）"}) do |f| %>
+      <%= f.submit "未解決", class: "btn mt-4 not_solved_btn" %>
+  <% end %>
+<% end %>

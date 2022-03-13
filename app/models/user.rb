@@ -24,8 +24,6 @@ class User < ApplicationRecord
   has_many :cooperations
   has_many :cooperated_wanteds, through: :cooperations, source: :wanted, dependent: :destroy
   
-  has_many :solveds
-  has_many :solved_wanteds, through: :solveds, source: :wanted, dependent: :destroy
   
   #捜索協力
   def cooperate(wanted)
@@ -41,15 +39,11 @@ class User < ApplicationRecord
     self.cooperated_wanteds.include?(wanted)
   end
   
-  #解決済
-  def solve(wanted)
+  #解決済にする
+  def solved_wanted(wanted)
     if self == wanted.user
-      self.solveds.find_or_create_by(wanted_id: wanted.id)
+      wanted.update(solved: true)
     end
   end
-  
-  def solved?(wanted)
-    self.solved_wanteds.include?(wanted)
-  end
-  
+
 end

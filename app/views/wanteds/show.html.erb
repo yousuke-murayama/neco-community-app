@@ -30,7 +30,7 @@
       <% if current_user == @wanted.user %>
       <div class="btn-group">
         <%= link_to '捜索願を取り消す', @wanted, method: :delete, class: 'btn btn-danger mt-4' %>
-        <%= render 'solveds/solved_button', wanted: @wanted %>
+        <%= render 'wanteds/wanted_solved_button', wanted: @wanted %>
       </div>
       <% else %>
       <div class="async_cooperation">
